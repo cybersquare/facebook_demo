@@ -42,6 +42,7 @@ def user_register(request):
     insertLogin_model(login)
 
     return Response('Successfully registered')
+    # this is a test commit
 
 # @api_view(['POST'])
 # def user_updatePassword(request):
