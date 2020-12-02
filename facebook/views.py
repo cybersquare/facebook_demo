@@ -40,8 +40,6 @@ def user_register(request):
         #add to login table
     login = Login(username,password)
     insertLogin_model(login)
-    
-
 
     return Response('Successfully registered')
 
