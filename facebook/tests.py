@@ -45,7 +45,7 @@ class TestSample(TestCase):
         self.assertEquals(res.data, 'Successfully registered' )
 
 
-        def test_register(self): #Method name shoudl start with 'test'
+    def test_register(self): #Method name shoudl start with 'test'
         url = reverse('user_register')
         res = self.client.post(url, data)
         # print(res.data)
