@@ -1,13 +1,13 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from . data import *
+from . db import *
 from . models import *
 
-# @api_view(['GET'])
-# def showemp(request):
-#     if request.method = 'GET':
-#         serialize = serializationclass(results, many =True)
-#         return Response(serialize.data)
+
+@api_view(['GET'])
+def index(request):
+    message = 'Congratulations, you  have created an API'
+    return Response(message)
 
 
 @api_view(['POST'])
@@ -17,10 +17,10 @@ def user_login(request):
     password = request.data['password']
     print(username)
     print(password)
- 
     login = Login(username, password)
-    result = login_model(login)
+    result = login_db(login)
     return Response(result)
+
 
 @api_view(['POST'])
 def user_register(request):
@@ -36,43 +36,26 @@ def user_register(request):
     #add to registered users
     user = User(first_name, last_name, gender, dob, email, phone)
     print(user)
-    regsiter_model(user)
-        #add to login table
+    user_id = regsiter_db(user)
+    #add to login table
     login = Login(username,password)
-    insertLogin_model(login)
+    insertLogin_db(user_id, login)
 
     return Response('Successfully registered')
-    # this is a test commit
-
-# @api_view(['POST'])
-# def user_updatePassword(request):
-#     username = request.data['username']
-#     old_password = request .data['old_password']
-#     new_password = request.data['new_password']
-#     login = Login(username, old_password)
 
 
+@api_view(['POST'])
+def user_updatePassword(request):
+    username = request.data['username']
+    current_password = request .data['current_password']
+    new_password = request.data['new_password']
+    status = update_password_db(username, current_password, new_password)
 
 
 
+# PEP 8 coding standards
+# Linting automatic checking
+# Deployment, git, ci/cd
 
-
-  
-  
-
-
-
-
-
-
-
-
-
-    
-
-
-    
-
-
-
-     
+# 3 month
+# Security - API - JWT authorization

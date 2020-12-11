@@ -4,10 +4,10 @@ CREATE TABLE users(
     pk_user_id INT PRIMARY KEY AUTO_INCREMENT, 
     first_name VARCHAR(200) NOT NULL ,
     last_name VARCHAR(200),
-    mobileno VARCHAR (30) UNIQUE,
-    email VARCHAR(100) UNIQUE,
+    gender VARCHAR(10),
     dob DATE,
-    gender VARCHAR(10)
+    email VARCHAR(100) UNIQUE,
+    mobileno VARCHAR (30) UNIQUE
     );
 
 CREATE TABLE login(
@@ -16,7 +16,7 @@ CREATE TABLE login(
     password VARCHAR(200),
     fk_user_id INT,
     FOREIGN KEY(fk_user_id) REFERENCES users(pk_user_id)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+    ON DELETE CASCADE ON UPDATE CASCADE
     );
     
 CREATE TABLE friends(
@@ -26,15 +26,6 @@ CREATE TABLE friends(
     FOREIGN KEY(fk_user_id) REFERENCES users(pk_user_id)
     ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(fk_friends_id) REFERENCES users(pk_user_id)
-    ON DELETE CASCADE ON UPDATE CASCADE,
-    );
-
-CREATE TABLE images(
-    pk_img_id INT PRIMARY KEY AUTO_INCREMENT,
-    post_id INT, 
-    img VARCHAR(100),
-    is_profile BOOLEAN,
-    FOREIGN KEY(post_id) REFERENCES psots(pk_post_id)
     ON DELETE CASCADE ON UPDATE CASCADE
     );
 
@@ -45,10 +36,20 @@ CREATE TABLE posts(
     content VARCHAR (400),
     create_time DATETIME,
     FOREIGN KEY(fk_user_id) REFERENCES users(pk_user_id)
-    ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY(fk_image_id) REFERENCES images(pk_img_id)
     ON DELETE CASCADE ON UPDATE CASCADE
     );
+
+
+CREATE TABLE images(
+    pk_img_id INT PRIMARY KEY AUTO_INCREMENT,
+    post_id INT, 
+    img VARCHAR(100),
+    is_profile BOOLEAN,
+    FOREIGN KEY(post_id) REFERENCES psots(pk_post_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+
     
 CREATE TABLE comments(
     pk_comment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,14 +81,5 @@ CREATE TABLE likes(
     );
 
 
-
-
-
-
-
-
-
-
-
-
-
+INSERT INTO users VALUES(null, 'Fname', 'Lname', 'male','2000-01=01', 'info@cybersquare.com', '9090767012');
+INSERT INTO login VALUES(null, 'user', 'pass', 1);
