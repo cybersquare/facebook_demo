@@ -52,16 +52,15 @@ def regsiter_db(user):
         return 0
 
 
-def update_password_db(username, current_password, new_password):
-    db = Db()
-    cursor = db.cursor    
-    sql = "SELECT * FROM login where username ='"+username+"'" 
-    cursor.execute(sql)
-    result = cursor.fetchone()
-    if result:
-        current_pass = result['password']
-        if current_pass == current_password:
-
+# def update_password_db(username, current_password, new_password):
+#     db = Db()
+#     cursor = db.cursor    
+#     sql = "SELECT * FROM login where username ='"+username+"'" 
+#     cursor.execute(sql)
+#     result = cursor.fetchone()
+#     if result
+#         current_pass = result['password']
+#         if current_pass == current_password
 
 # Update password
 # insert post

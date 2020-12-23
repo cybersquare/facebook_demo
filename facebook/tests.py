@@ -34,9 +34,9 @@ class TestSample(TestCase):
             "last_name": "Joseph",
             "gender":"Male",
             "dob":"2000-10-01",
-            "email":"george@baabte.com",
+            "email":"george123@baabte.com",
             "password":"password",
-            "phone":"123456789",
+            "phone":"123456780",
         }
         url = reverse('user_register')
         res = self.client.post(url, data)
@@ -45,12 +45,12 @@ class TestSample(TestCase):
         self.assertEquals(res.data, 'Successfully registered' )
 
 
-    def test_register(self): #Method name shoudl start with 'test'
-        url = reverse('user_register')
-        res = self.client.post(url, data)
-        # print(res.data)
-        self.assertEquals(res.status_code, 200 )
-        self.assertEquals(res.data, 'Successfully registered' )
+    # def test_register(self): #Method name shoudl start with 'test'
+    #     url = reverse('user_register')
+    #     res = self.client.post(url, data)
+    #     # print(res.data)
+    #     self.assertEquals(res.status_code, 200 )
+    #     self.assertEquals(res.data, 'Successfully registered' )
 
 
 

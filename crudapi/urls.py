@@ -23,7 +23,7 @@ urlpatterns = [
     path('index/', fb.index, name='index'),
     path('fb_login/', fb.user_login, name ='user_login'),
     path('fb_registration/', fb.user_register, name ='user_register'),
-    path('fb_updatePassword', fb.update_password, name = 'update_password'),
+    # path('fb_updatePassword', fb.update_password, name = 'update_password'),
 ]
 
 
